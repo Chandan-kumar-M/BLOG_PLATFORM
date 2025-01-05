@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  user-service:
+    build:
+      context: ./user-service
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  
+  blog-service:
+    build:
+      context: ./blog-service
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+  
+  comment-service:
+    build:
+      context: ./comment-service
+    ports:
+      - "3002:3002"
+    depends_on:
+      - db
+  
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: chandan
+      POSTGRES_DB: blog-platform
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  
+volumes:
+  pgdata:
