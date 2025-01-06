@@ -6,7 +6,7 @@ const con = new Client({
     host:"localhost",
     user:"postgres",
     port:5432,
-    password:"chandan",
+    password:"yourpassword",
     database:"blog-platform"
 })
 
